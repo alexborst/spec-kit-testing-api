@@ -1,50 +1,37 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Spec Kit Testing API Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Clean Code Principles
+Write self-documenting code with clear naming conventions adhering to the Single Responsibility Principle. Every class, method, and variable must have a clear, unambiguous purpose. Maintain minimal cognitive complexity - methods should be small, focused, and easily understood. Use meaningful names that express intent without requiring additional comments.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Minimal Dependencies
+Embrace dependency minimalism to reduce complexity and security surface area. Prefer .NET Standard Library features over third-party packages whenever possible. When external dependencies are necessary, they must be thoroughly justified, well-maintained, and aligned with our architectural principles. Each dependency must provide significant value that cannot be reasonably achieved with built-in functionality.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Stateless Design
+Design all components to be stateless by default. API endpoints must not maintain session state between requests. All required data must be passed explicitly through method parameters or request payloads. This principle ensures horizontal scalability, simplified testing, and predictable behavior across all system components.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. RESTful API Design
+Implement true RESTful principles using HTTP methods semantically (GET for retrieval, POST for creation, PUT for updates, DELETE for removal). Resource-oriented URLs with proper HTTP status codes. Support standard content negotiation and follow REST maturity model level 2 minimum. Ensure idempotency for safe and idempotent operations.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. No Testing Implementation
+Testing infrastructure, frameworks, and test cases are explicitly excluded from this implementation phase. No unit tests, integration tests, functional tests, or end-to-end tests should be created. This allows focus on core architecture and business logic without testing overhead. Testing will be addressed in future phases.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technology Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### .NET Framework Requirements
+Use the most recent version of .NET with Standard level support (currently .NET 8 LTS). Leverage built-in dependency injection, configuration management, and logging providers. Follow Microsoft's recommended practices for ASP.NET Core development. Maintain compatibility with Standard support lifecycle policies.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Architecture Constraints
+Implement layered architecture with clear separation of concerns. Controllers handle HTTP concerns only, business logic resides in service layers, and data access is isolated in repository patterns. No business logic in controllers or data models. Use interfaces to define contracts between layers.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Standards
+
+### Code Quality Gates
+All code must compile without warnings in Release configuration. Follow Microsoft's C# coding conventions and naming guidelines. Use nullable reference types and handle null scenarios explicitly. Implement proper exception handling with appropriate exception types and meaningful messages.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices and coding standards. All code changes must demonstrate compliance with these principles. Any deviation requires explicit architectural decision documentation and approval. Complexity must be justified with clear business value.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
