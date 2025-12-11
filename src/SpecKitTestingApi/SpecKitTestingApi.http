@@ -1,6 +1,0 @@
-@SpecKitTestingApi_HostAddress = http://localhost:5136
-
-GET {{SpecKitTestingApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
